@@ -1,55 +1,24 @@
-# DB 設計
+# README
 
-## users table
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| email              | string              | null: false ,unique: true|
-| encrypted_password | string              | null: false             |
-| name               | string              | null: false             |
-| birth date         |strings              | null: false             |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-* has_many :prototypes
-* has_many :comments
+* System dependencies
 
-## 商品情報 table
+* Configuration
 
-| Column                              | Type       | Options           |
-|-------------------------------------|------------|-------------------|
-| exhibitor                           | string     | null: false       |
-| category                            | string     | null: false       |
-| state                               | string n   | null: false       |
-| shipping                            | string     | null: false       |
-| area                                | string     | null: false       |
+* Database creation
 
+* Database initialization
 
-### Association
+* How to run the test suite
 
-- belongs_to :user
-- has_many :comments
+* Services (job queues, cache servers, search engines, etc.)
 
-## 商品発送情報 table
+* Deployment instructions
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| postal code                    | string     | null: false       |
-| divisions                      | string     | null: false       |
-| cities                         | string     | null: false       |
-| address                        | string     | null: false       |
-| building                       | string     | null: false       |
-| phone                          | string     | null: false       |
-### Association
-
-- belongs_to :prototype
-- belongs_to :user
-
-### 購入記録
-| who                                 | string     | null: false       |
-| what                                | string     | null: false       |
-
-### Association
-
-- belongs_to :prototype
-- belongs_to :user
+* ...
