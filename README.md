@@ -7,34 +7,38 @@
 | email              | string              | null: false ,unique: true|
 | encrypted_password | string              | null: false             |
 | name               | string              | null: false             |
-| birth date         |strings              | null: false             |
+| last_name          | string              | null: false             |
+| first_name         | string              | null: false             |
+| kana_last name     | string              | null: false             |
+| kana_first name    | string              | null: false             |
+| birth_date         | date                | null: false             |
 
 ### Association
 
-* has_many :prototypes
+* has_many :items
 * has_many :comments
 
-## 商品情報 table
+## items table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| exhibitor                           | string     | null: false       |
-| category                            | string     | null: false       |
-| state                               | string n   | null: false       |
-| shipping                            | string     | null: false       |
-| area                                | string     | null: false       |
-
-
+| product_name                           | string     | null: false       |
+| description                            | string     | null: false       |
+| category                               | string     | null: false       |
+| state                                  | string     | null: false       |
+| shipping charges                       | string     | null: false       |
+| region                                 | string     | null: false       |
+| days                                   | string     | null: false       |
 ### Association
 
 - belongs_to :user
 - has_many :comments
 
-## 商品発送情報 table
+## address table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| postal code                    | string     | null: false       |
+| postal_code                    | string     | null: false       |
 | divisions                      | string     | null: false       |
 | cities                         | string     | null: false       |
 | address                        | string     | null: false       |
@@ -42,14 +46,14 @@
 | phone                          | string     | null: false       |
 ### Association
 
-- belongs_to :prototype
+- belongs_to :user
 - belongs_to :user
 
-### 購入記録
+### order
 | who                                 | string     | null: false       |
 | what                                | string     | null: false       |
 
 ### Association
 
-- belongs_to :prototype
+- belongs_to :user
 - belongs_to :user
