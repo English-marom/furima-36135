@@ -16,44 +16,45 @@
 ### Association
 
 * has_many :items
-* has_many :comments
 
 ## items table
 
-| Column                              | Type       | Options           |
-|-------------------------------------|------------|-------------------|
-| product_name                           | string     | null: false       |
-| description                            | string     | null: false       |
-| category                               | string     | null: false       |
-| state                                  | string     | null: false       |
-| shipping charges                       | string     | null: false       |
-| region                                 | string     | null: false       |
-| days                                   | string     | null: false       |
+| Column                                   | Type       | Options           |
+|--------------------------------  --------|------------|-------------------|
+| product_name                             | string     | null: false       |
+| description                              | text       | null: false       |
+| category_id                              | integer    | null: false       |
+| state_id                                 | integer    | null: false       |
+| shipping charges_id                      | integer    | null: false       |
+| region_id                                | integer    | null: false       |
+| days_id                                  | integer    | null: false       |
+| user                                     | references | null: false, foreign_key: true |
+
 ### Association
 
 - belongs_to :user
-- has_many :comments
 
 ## address table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
 | postal_code                    | string     | null: false       |
-| divisions                      | string     | null: false       |
+| region_id                      | string     | null: false       |
 | cities                         | string     | null: false       |
 | address                        | string     | null: false       |
 | building                       | string     | null: false       |
 | phone                          | string     | null: false       |
+| order                          | references | null: false, foreign_key: true |
+
 ### Association
 
-- belongs_to :user
-- belongs_to :user
+- belongs_to :order
 
 ### order
-| who                                 | string     | null: false       |
-| what                                | string     | null: false       |
+| user                                 | references     | null: false       |
+| item                                | references     | null: false       |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :user
+- belongs_to :item
