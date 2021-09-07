@@ -9,8 +9,8 @@
 | name               | string              | null: false             |
 | last_name          | string              | null: false             |
 | first_name         | string              | null: false             |
-| kana_last name     | string              | null: false             |
-| kana_first name    | string              | null: false             |
+| kana_last_name     | string              | null: false             |
+| kana_first_name    | string              | null: false             |
 | birth_date         | date                | null: false             |
 
 ### Association
