@@ -29,7 +29,7 @@
 | shipping_charge_id                       | integer    | null: false       |
 | region_id                                | integer    | null: false       |
 | scheduled_day_id                         | integer    | null: false       |
-| amount_id                                | integer    | null: false       |
+| amount                                   | integer    | null: false       |
 | user                                     | references | null: false, foreign_key: true |
 
 ### Association
@@ -46,21 +46,21 @@
 | cities                         | string     | null: false       |
 | address                        | string     | null: false       |
 | phone                          | string     | null: false       |
+| building                       | string     | null: false       |
 | order                          | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :order
-- belongs_to :order
 
 ### orders table
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| user                                 | references     | null: false       |
-| item                                 | references     | null: false       |
+| user                                 | references     | null: false,foreign_key: true      |
+| item                                 | references     | null: false,foreign_key: true      |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_many :address
