@@ -42,11 +42,11 @@
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
 | postal_code                    | string     | null: false       |
-| region_id                      | string     | null: false       |
-| cities                         | string     | null: false       |
+| region_id                      | integer    | null: false       |
+| city                           | string     | null: false       |
 | address                        | string     | null: false       |
 | phone                          | string     | null: false       |
-| building                       | string     | null: false       |
+| building                       | string     |                   |
 | order                          | references | null: false, foreign_key: true |
 
 ### Association
@@ -63,4 +63,4 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many :address
+- has_one:address
