@@ -4,7 +4,11 @@ RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
   end
+
   describe 'ユーザー新規登録' do
+    it 'しっかりと内容が正しければ' do
+      expect(@user).to be_valid
+    end
 
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
@@ -52,6 +56,19 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
     end
 
+    it 'passwordが半角数字のみの場合は登録できない' do
+      @user.password = '11111'
+      @user.valid?
+      expect(@user.errors.full_messages).to include ("Password には英字と数字の両方を含めて設定してください")
+    end
+
+    it 'passwordが全角の場合は登録できない' do
+      @user.password = 'AAAAA'
+      @user.valid?
+      binding.pry
+      expect(@user.errors.full_messages).to include "Password には英字と数字の両方を含めて設定してください"
+    end
+
     it 'passwordとpasswordは、値が一致が必要であること' do
       @user.password = 'abc123'
       @user.password_confirmation='abcd123'
@@ -94,37 +111,6 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Birth date can't be blank")
     end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   end
 end
 
