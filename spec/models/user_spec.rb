@@ -65,7 +65,6 @@ RSpec.describe User, type: :model do
     it 'passwordが全角の場合は登録できない' do
       @user.password = 'AAAAA'
       @user.valid?
-      binding.pry
       expect(@user.errors.full_messages).to include "Password には英字と数字の両方を含めて設定してください"
     end
 
@@ -88,13 +87,25 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name can't be blank")
     end
 
+    it 'お名前カナ(全角)は、名前が必須であること' do
+      @user.kana_first_name = 'eng12'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana first name is invalid. Input full-width katakana characters.")
+    end
+
+      it 'お名前カナ(全角)は、名前が必須であること' do
+        @user.kana_last_name = 'eng12'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana last name is invalid. Input full-width katakana characters.")
+      end
+
     it 'お名前(全角)で漢字、ひらがな、カタカナ、が必須であること' do
       @user.first_name = 'English１２３'
       @user.valid?
       expect(@user.errors.full_messages).to include("First name is invalid. Input full-width characters.")
     end
 
-    it 'お名前カナ(全角)は、名前が必須であること' do
+    it 'お名前カナ(全角)は、全角、カタカナでの入力が必須であること' do
       @user.kana_first_name = 'ひめ田'
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana first name is invalid. Input full-width katakana characters.")
